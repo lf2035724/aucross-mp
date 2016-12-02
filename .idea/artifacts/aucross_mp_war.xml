@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="aucross-mp:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="aucross-mp-1.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="aucross-mp:war exploded" />
+    </root>
+  </artifact>
+</component>

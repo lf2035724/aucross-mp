@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="mp_customer" extends="default" namespace="/customer">
+		<action name="popup" class="customerAction" method="popup">
+			<result name="success">/pages/mp/cust/popup.jsp</result>
+		</action>
+	</package>
+
+	<!-- 个人客户 -->
+	<package name="mp_cust_person" extends="default" namespace="/cust/person">
+
+		<action name="list" class="personalAction" method="list">
+			<result name="success">/pages/mp/cust/personal/list.jsp</result>
+		</action>
+
+		<action name="view" class="personalAction" method="view">
+			<result name="input" type="redirectAction">notfound</result>
+			<result name="success">/pages/mp/cust/personal/view.jsp</result>
+		</action>
+	</package>
+
+	<!-- 企业客户 -->
+	<package name="mp_cust_enterprise" extends="default" namespace="/cust/enterprise">
+		<action name="popup" class="enterpriseAction" method="list">
+			<result name="success">/pages/mp/cust/enterprise/popup.jsp</result>
+		</action>
+
+		<action name="list" class="enterpriseAction" method="list">
+			<result name="success">/pages/mp/cust/enterprise/list.jsp</result>
+		</action>
+
+		<action name="detail" class="enterpriseAction" method="detail">
+			<result name="success">/pages/mp/cust/enterprise/detail.jsp</result>
+			<result name="input">/pages/mp/cust/enterprise/detail.jsp</result>
+		</action>
+
+		<action name="gotoInput" class="enterpriseAction" method="gotoPage">
+			<result name="success">/pages/mp/cust/enterprise/input.jsp</result>
+		</action>
+
+		<action name="input" class="enterpriseAction" method="save">
+			<result name="success" type="redirectAction">gotoInput</result>
+			<result name="input">/pages/mp/cust/enterprise/input.jsp</result>
+		</action>
+
+		<action name="modifyDetail" class="enterpriseAction" method="detail">
+			<result name="success">/pages/mp/cust/enterprise/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="enterpriseAction" method="update">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input">/pages/mp/cust/enterprise/modify.jsp</result>
+		</action>
+
+		<action name="listWaitAudit" class="enterpriseAction" method="listWaitAudit">
+			<result name="success">/pages/mp/cust/enterprise/audit/list.jsp</result>
+		</action>
+
+		<action name="todoauditlist" class="enterpriseAction" method="todoAuditList">
+			<result name="success">/pages/mp/cust/enterprise/audit/todo_audit_list.jsp</result>
+		</action>
+
+		<action name="todoaudit" class="enterpriseAction" method="todoAudit">
+			<result name="input" type="redirectAction">todoauditlist</result>
+			<result name="success">/pages/mp/cust/enterprise/audit/todo_audit.jsp</result>
+		</action>
+
+		<action name="audit" class="enterpriseAction" method="audit">
+			<result name="error" type="redirectAction">list</result>
+			<result name="input" type="chain">todoaudit</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+
+		<action name="auditlist" class="enterpriseAction" method="auditList">
+			<result name="input" type="redirectAction">list</result>
+			<result name="success">/pages/mp/cust/enterprise/audit/audit_list.jsp</result>
+		</action>
+
+		<action name="pass" class="enterpriseAction" method="pass">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="refuse" class="enterpriseAction" method="refuse">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="check" class="enterpriseAction" method="check"></action>
+
+		<action name="checkEmail" class="enterpriseAction" method="checkEmail"></action>
+	</package>
+
+	<!-- 企业客户 打款验证 -->
+	<package name="mp_cust_ent" extends="default" namespace="/cust/ent/paycheck">
+		<action name="listforpay" class="payCheckAction" method="listForPay">
+			<result name="success">/pages/mp/cust/ent/list_for_pay.jsp</result>
+		</action>
+		
+		<action name="listbcforpay" class="payCheckAction" method="listBcForPay">
+			<result name="success">/pages/mp/cust/ent/list_bc_for_pay.jsp</result>
+		</action>
+		
+		<action name="bctodoaudit" class="payCheckAction" method="bcTotoAudit">
+			<result name="input" type="redirectAction">listbcforpay</result>
+			<result name="success">/pages/mp/cust/ent/todo_audit.jsp</result>
+		</action>
+		
+		<action name="bcaudit" class="payCheckAction" method="bcAudit">
+			<result name="input" type="redirectAction">listbcforpay</result>
+			<result name="success" type="redirectAction">listbcforpay</result>
+		</action>
+
+		<action name="bcpay" class="payCheckAction" method="bcPay">
+			<result name="input" type="redirectAction">listbcforpay</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+
+		<action name="pay" class="payCheckAction" method="pay">
+			<result name="input" type="redirectAction">listforpay</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+
+		<action name="list" class="payCheckAction" method="list">
+			<result name="success">/pages/mp/cust/ent/list.jsp</result>
+		</action>
+
+		<action name="refresh" class="payCheckAction" method="refresh">
+			<result name="input" type="redirectAction">list</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+
+	</package>
+
+	<!-- 银行卡 -->
+	<package name="mp_cust_bankcard" extends="default" namespace="/cust/bankcard">
+		<action name="list" class="custBankcardAction" method="list">
+			<result name="success">/pages/mp/custbankcard/list.jsp</result>
+		</action>
+
+		<action name="find" class="custBankcardAction" method="find">
+			<result name="success" type="json">
+				<param name="includeProperties">beans.*</param>
+			</result>
+		</action>
+
+		<action name="popup" class="custBankcardAction" method="popup">
+			<result name="success">/pages/mp/custbankcard/popup.jsp</result>
+		</action>
+	</package>
+
+	<!-- 解除绑定银行卡 -->
+	<package name="enterprise_remove_binding" extends="default" namespace="/mp/custbankcard/removebinding">
+		<action name="list" class="enterpriseAction" method="listMp">
+			<result name="success">/pages/mp/custbankcard/remove-binding/list.jsp</result>
+		</action>
+
+		<action name="listBinding" class="custBankcardAction" method="listBinding">
+			<result name="success">/pages/mp/custbankcard/remove-binding/delete.jsp</result>
+		</action>
+
+		<action name="unbindingForAdmin" class="enterpriseAction" method="unbindingForAdmin">
+			<result name="success" type="redirectAction">listBinding.do?custId=${#parameters.custId }</result>
+			<result name="input" type="redirectAction">listBinding.do?custId=${#parameters.custId }</result>
+		</action>
+	</package>
+
+	<!-- 企业客户银行卡 -->
+	<package name="enterprise_binding" extends="default" namespace="/mp/custbankcard/binding">
+		<action name="list" class="enterpriseAction" method="listPass">
+			<result name="success">/pages/mp/custbankcard/binding/input/list.jsp</result>
+			<result name="input">/pages/mp/custbankcard/binding/input/list.jsp</result>
+		</action>
+
+		<action name="gotoBinding" class="enterpriseAction" method="detail">
+			<result name="success">/pages/mp/custbankcard/binding/input/input.jsp</result>
+			<result name="input">/pages/mp/custbankcard/binding/input/list.jsp</result>
+		</action>
+
+		<action name="bindingForAdmin" class="custBankcardAction" method="bindingForAdmin">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<action name="listBinding" class="custBankcardAction" method="listBinding">
+			<result name="success">/pages/mp/custbankcard/binding/delete/list.jsp</result>
+		</action>
+
+		<action name="listWaitAudit" class="custBankcardAction" method="listWaitAudit">
+			<result name="success">/pages/mp/custbankcard/binding/audit/list.jsp</result>
+		</action>
+
+		<action name="pass" class="custBankcardAction" method="pass">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="refuse" class="custBankcardAction" method="refuse">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="detail" class="custBankcardAction" method="detail">
+			<result name="success">/pages/mp/custbankcard/binding/detail.jsp</result>
+			<result name="input">/pages/mp/custbankcard/binding/detail.jsp</result>
+		</action>
+				
+		<action name="guidModify" class="custBankcardAction" method="detail">
+			<result name="success">/pages/mp/custbankcard/binding/modify.jsp</result>
+			<result name="input">/pages/mp/custbankcard/binding/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="custBankcardAction" method="modify">
+			<result name="success" type="redirectAction">
+			<param name="namespace">/cust/bankcard</param>
+			<param name="actionName">list</param>
+			</result>
+			<result name="input">/pages/mp/custbankcard/binding/modify.jsp</result>
+		</action>
+	</package>
+
+	<!-- 商户 -->
+	<package name="cust_custmerchant" extends="default" namespace="/mp/cust/custmerchant">
+		<action name="list" class="custMerchantAction" method="list">
+			<result name="success">/pages/mp/cust/custmerchant/list.jsp</result>
+		</action>
+
+		<action name="gotoInput" class="custMerchantAction" method="gotoInput">
+			<result name="success">/pages/mp/cust/custmerchant/input.jsp</result>
+		</action>
+
+		<action name="input" class="custMerchantAction" method="input">
+			<result name="success" type="redirectAction">gotoInput</result>
+			<result name="input">/pages/mp/cust/custmerchant/input.jsp</result>
+		</action>
+
+		<action name="modifyDetail" class="custMerchantAction" method="modifyDetail">
+			<result name="success">/pages/mp/cust/custmerchant/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="custMerchantAction" method="modify">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<action name="delete" class="custMerchantAction" method="delete">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<action name="detail" class="custMerchantAction" method="detail">
+			<result name="success">/pages/mp/cust/custmerchant/detail.jsp</result>
+			<result name="input">/pages/mp/cust/custmerchant/detail.jsp</result>
+		</action>
+
+		<action name="listWaitAudit" class="custMerchantAction" method="listWaitAudit">
+			<result name="success">/pages/mp/cust/custmerchant/audit/list.jsp</result>
+		</action>
+
+		<action name="listCustMerchantChange" class="custMerchantAction" method="listCustMerchantChange">
+			<result name="success">/pages/mp/cust/custmerchant/todo_audit_list.jsp</result>
+		</action>
+		<action name="auditlistCustMerchant" class="custMerchantAction" method="auditlistCustMerchant">
+			<result name="success">/pages/mp/cust/custmerchant/audit_list.jsp</result>
+		</action>
+		<action name="todoaudit" class="custMerchantAction" method="todoAudit">
+			<result name="input" type="redirectAction">listCustMerchantChange</result>
+			<result name="success">/pages/mp/cust/custmerchant/todo_audit.jsp</result>
+		</action>
+		<action name="audit" class="custMerchantAction" method="audit">
+			<result name="error" type="redirectAction">listCustMerchantChange</result>
+			<result name="input" type="redirectAction">listCustMerchantChange</result>
+			<result name="success" type="redirectAction">listCustMerchantChange</result>
+		</action>
+		<action name="pass" class="custMerchantAction" method="pass">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="refuse" class="custMerchantAction" method="refuse">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+		<!-- 查看禁用或激活列表 -->
+		<action name="freezeList" class="custMerchantAction" method="freezeList">
+			<result name="success">/pages/mp/cust/custmerchant/freeze_list.jsp</result>
+		</action>
+		<!-- 禁用或激活用户 -->
+		<action name="activateOrFreeze" class="custMerchantAction" method="activateOrFreeze">
+			<result name="success" type="redirectAction">freezeList</result>
+			<result name="input" type="redirectAction">freezeList</result>
+		</action>
+
+		<!-- 更新证书. -->
+		<action name="updateCert" class="custMerchantAction" method="updateCert">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<!-- 下载私钥. -->
+		<action name="downloadJks" class="custMerchantAction" method="downloadJks">
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<!-- 下载公钥. -->
+		<action name="downloadCer" class="custMerchantAction" method="downloadCer">
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<!-- 进入上传页面. -->
+		<action name="gotoUpload" class="custMerchantAction" method="gotoUpload">
+			<result name="success">/pages/mp/cust/custmerchant/upload.jsp</result>
+		</action>
+
+		<!-- 上传证书. -->
+		<action name="upload" class="custMerchantAction" method="upload">
+			<result name="success" type="redirectAction">gotoUpload</result>
+			<result name="input" type="redirectAction">gotoUpload</result>
+		</action>
+
+		<!-- 验证私钥公钥是否匹配. -->
+		<action name="verify" class="custMerchantAction" method="verify">
+			<result name="success" type="redirectAction">gotoUpload</result>
+			<result name="input" type="redirectAction">gotoUpload</result>
+		</action>
+		
+		<!-- 商户弹出层 -->
+		
+		<action name="popup" class="custMerchantAction" method="list">
+			<result name="success">/pages/mp/cust/custmerchant/popup.jsp</result>
+		</action>
+	</package>
+
+	<!-- 机构 -->
+	<package name="cust_agency" extends="default" namespace="/mp/cust/agency">
+		<action name="gotoInput" class="custAgencyAction" method="gotoPage">
+			<result name="success">/pages/mp/agency/input.jsp</result>
+		</action>
+
+		<action name="list" class="custAgencyAction" method="findPage">
+			<result name="success">/pages/mp/agency/list.jsp</result>
+			<result name="input">/pages/mp/agency/list.jsp</result>
+		</action>
+
+		<action name="popup" class="custAgencyAction" method="findPage">
+			<result name="success">/pages/mp/agency/popup.jsp</result>
+			<result name="input">/pages/mp/agency/popup.jsp</result>
+		</action>
+
+		<action name="detail" class="custAgencyAction" method="detail">
+			<result name="success">/pages/mp/agency/detail.jsp</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<action name="modifyDetail" class="custAgencyAction" method="detail">
+			<result name="success">/pages/mp/agency/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="custAgencyAction" method="update">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input">/pages/mp/agency/modify.jsp</result>
+		</action>
+
+		<action name="input" class="custAgencyAction" method="save">
+			<result name="success" type="redirectAction">gotoInput</result>
+			<result name="input" type="redirectAction">gotoInput</result>
+		</action>
+
+		<action name="listWaitAudit" class="custAgencyAction" method="listWaitAudit">
+			<result name="success">/pages/mp/agency/list-audit.jsp</result>
+		</action>
+
+		<action name="todoauditlist" class="custAgencyAction" method="todoAuditList">
+			<result name="success">/pages/mp/agency/audit/todo_audit_list.jsp</result>
+		</action>
+
+		<action name="auditlist" class="custAgencyAction" method="auditList">
+			<result name="input" type="redirectAction">list</result>
+			<result name="success">/pages/mp/agency/audit/audit_list.jsp</result>
+		</action>
+
+		<action name="todoaudit" class="custAgencyAction" method="todoAudit">
+			<result name="input" type="redirectAction">todoauditlist</result>
+			<result name="success">/pages/mp/agency/audit/todo_audit.jsp</result>
+		</action>
+
+		<action name="audit" class="custAgencyAction" method="audit">
+			<result name="error" type="redirectAction">list</result>
+			<result name="input" type="chain">todoaudit</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+
+		<action name="pass" class="custAgencyAction" method="pass">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="refuse" class="custAgencyAction" method="refuse">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="find" class="custAgencyAction" method="find">
+			<result name="success" type="json">
+				<param name="includeProperties">beans\[\d+\]\.identity,beans\[\d+\]\.name,beans\[\d+\]\.code</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 人工找回密码 -->
+	<package name="cust_manualrecovery" extends="default" namespace="/mp/cust/recovery">
+		<action name="list" class="custManualRecoveryAction" method="list">
+			<result name="success">/pages/mp/recovery/manual/list.jsp</result>
+		</action>
+
+		<action name="detail" class="custManualRecoveryAction" method="detail">
+			<result name="success">/pages/mp/recovery/manual/detail.jsp</result>
+		</action>
+
+		<action name="detailOperate" class="custManualRecoveryAction" method="detail">
+			<result name="success">/pages/mp/recovery/manual/first-audit/detail.jsp</result>
+		</action>
+
+		<action name="imageDetail" class="custManualRecoveryAction" method="imageDetail"></action>
+
+		<!-- 初审 -->
+		<action name="listFirstAudit" class="custManualRecoveryAction" method="listFirstAudit">
+			<result name="success">/pages/mp/recovery/manual/first-audit/list.jsp</result>
+		</action>
+
+		<action name="modifyFirstAuditPass" class="custManualRecoveryAction" method="modifyFirstAuditPass">
+			<result name="success" type="redirectAction">listFirstAudit</result>
+			<result name="input" type="redirectAction">listFirstAudit</result>
+		</action>
+
+		<action name="modifyFirstAuditRefuse" class="custManualRecoveryAction" method="modifyFirstAuditRefuse">
+			<result name="success" type="redirectAction">listFirstAudit</result>
+			<result name="input" type="redirectAction">listFirstAudit</result>
+		</action>
+
+		<!-- 复审 -->
+		<action name="listReAudit" class="custManualRecoveryAction" method="listReAudit">
+			<result name="success">/pages/mp/recovery/manual/re-audit/list.jsp</result>
+		</action>
+
+		<action name="modifyReAuditPass" class="custManualRecoveryAction" method="modifyReAuditPass">
+			<result name="success" type="redirectAction">listReAudit</result>
+			<result name="input" type="redirectAction">listReAudit</result>
+		</action>
+
+		<action name="modifyReAuditRefuse" class="custManualRecoveryAction" method="modifyReAuditRefuse">
+			<result name="success" type="redirectAction">listReAudit</result>
+			<result name="input" type="redirectAction">listReAudit</result>
+		</action>
+	</package>
+
+	<!-- 个人客户实名认证 -->
+	<package name="cust_nameauth" extends="default" namespace="/mp/cust/auth/nameauth">
+		<action name="list" class="custNameAuthAction" method="list">
+			<result name="success">/pages/mp/auth/nameauth/list.jsp</result>
+		</action>
+
+		<action name="detail" class="custNameAuthAction" method="detail">
+			<result name="success">/pages/mp/auth/nameauth/detail.jsp</result>
+		</action>
+
+		<action name="detailOperate" class="custNameAuthAction" method="detail">
+			<result name="success">/pages/mp/auth/nameauth/first-audit/detail.jsp</result>
+		</action>
+
+		<action name="imageDetail" class="custCertAction" method="imageDetail"></action>
+
+		<!-- 初审 -->
+		<action name="listFirstAudit" class="custNameAuthAction" method="listFirstAudit">
+			<result name="success">/pages/mp/auth/nameauth/first-audit/list.jsp</result>
+		</action>
+
+		<action name="modifyFirstAuditPass" class="custNameAuthAction" method="modifyFirstAuditPass">
+			<result name="success" type="redirectAction">listFirstAudit</result>
+			<result name="input" type="redirectAction">listFirstAudit</result>
+		</action>
+
+		<action name="modifyFirstAuditRefuse" class="custNameAuthAction" method="modifyFirstAuditRefuse">
+			<result name="success" type="redirectAction">listFirstAudit</result>
+			<result name="input" type="redirectAction">listFirstAudit</result>
+		</action>
+
+		<!-- 复审 -->
+		<action name="listReAudit" class="custNameAuthAction" method="listReAudit">
+			<result name="success">/pages/mp/auth/nameauth/re-audit/list.jsp</result>
+		</action>
+
+		<action name="modifyReAuditPass" class="custNameAuthAction" method="modifyReAuditPass">
+			<result name="success" type="redirectAction">listReAudit</result>
+			<result name="input" type="redirectAction">listReAudit</result>
+		</action>
+
+		<action name="modifyReAuditRefuse" class="custNameAuthAction" method="modifyReAuditRefuse">
+			<result name="success" type="redirectAction">listReAudit</result>
+			<result name="input" type="redirectAction">listReAudit</result>
+		</action>
+	</package>
+	<!-- 注册企业客户 -->
+	<package name="portal_enterprise" extends="default" namespace="/mp/cust/portalenterprise">
+		<action name="list" class="protalEnterpriseAction" method="list">
+			<result name="success">/pages/mp/cust/portalenterprise/list.jsp</result>
+		</action>
+		<action name="detail" class="protalEnterpriseAction" method="detail">
+			<result name="success">/pages/mp/cust/portalenterprise/detail.jsp</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+		<action name="goAudit" class="protalEnterpriseAction" method="detail">
+			<result name="success">/pages/mp/cust/portalenterprise/audit/audit.jsp</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+		<action name="audit" class="protalEnterpriseAction" method="audit">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+		<action name="result" class="protalEnterpriseAction" method="result">
+			<result name="success">/pages/mp/cust/portalenterprise/audit/list.jsp</result>
+		</action>
+		<action name="auditDetail" class="protalEnterpriseAction" method="auditDetail">
+			<result name="success">/pages/mp/cust/portalenterprise/audit/detail.jsp</result>
+			<result name="input" type="redirectAction">result</result>
+		</action>
+	</package>
+	<!-- 供应链 -->
+	<package name="cust_supplychain" extends="default" namespace="/mp/cust/supplychain">
+		<action name="list" class="supplyChainAction" method="list">
+			<result name="success">/pages/mp/cust/supplychain/list.jsp</result>
+		</action>
+		<action name="detail" class="supplyChainAction" method="detail">
+			<result name="success">/pages/mp/cust/supplychain/detail.jsp</result>
+		</action>
+		<action name="listSupplyMessage" class="supplyChainAction" method="listSupplyMessage">
+			<result name="success">/pages/mp/cust/supplychain/listSupplyMessage.jsp</result>
+		</action>
+		<action name="supplyMessageDetail" class="supplyChainAction" method="supplyMessageDetail">
+			<result name="success">/pages/mp/cust/supplychain/supplyMessageDetail.jsp</result>
+		</action>
+		<action name="supplyMessageToAudit" class="supplyChainAction" method="supplyMessageToAudit">
+			<result name="success">/pages/mp/cust/supplychain/supplyMessageAudit.jsp</result>
+		</action>
+		<action name="supplyMessageAudit" class="supplyChainAction" method="supplyMessageAudit">
+			<result name="success" type="redirectAction">listSupplyMessage</result>
+			<result name="input" type="redirectAction">supplyMessageToAudit</result>
+		</action>
+		<action name="listCapitalRequirements" class="supplyChainAction" method="listCapitalRequirements">
+			<result name="success">/pages/mp/cust/supplychain/listCapitalRequirements.jsp</result>
+		</action>
+		<action name="capitalRequirementsDetail" class="supplyChainAction" method="capitalRequirementsDetail">
+			<result name="success">/pages/mp/cust/supplychain/capitalRequirementsDetail.jsp</result>
+		</action>
+		<action name="capitalRequirementsToAudit" class="supplyChainAction" method="capitalRequirementsToAudit">
+			<result name="success">/pages/mp/cust/supplychain/capitalRequirementsAudit.jsp</result>
+		</action>
+		<action name="capitalRequirementsAudit" class="supplyChainAction" method="capitalRequirementsAudit">
+			<result name="success" type="redirectAction">listCapitalRequirements</result>
+			<result name="input" type="redirectAction">capitalRequirementsToAudit</result>
+		</action>
+	</package>
+	<!-- 授信管理 -->
+	<package name="mp_cust_authMoney" extends="default" namespace="/mp/cust/authmoney">
+
+		<action name="list" class="authMoneyAction" method="list">
+			<result name="success">/pages/mp/cust/authmoney/list.jsp</result>
+		</action>
+		
+		<action name="freezeBuy" class="authMoneyAction" method="freezePayUsed">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+		
+		<action name="freezeRedeem" class="authMoneyAction" method="freezeRedeemUsed">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+		
+		<action name="unfreezeBuy" class="authMoneyAction" method="unfreezePayUsed">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+
+		<action name="unfreezeRedeem" class="authMoneyAction" method="unfreezeRedeemUsed">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+		
+		<action name="auditList" class="authMoneyAction" method="auditList">
+			<result name="success">/pages/mp/cust/authmoney/list_change.jsp</result>
+		</action>
+		
+		<action name="resultList" class="authMoneyAction" method="resultList">
+			<result name="success">/pages/mp/cust/authmoney/list_audit.jsp</result>
+		</action>
+		
+		<action name="audit" class="authMoneyAction" method="audit">
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		
+		<action name="view" class="authMoneyAction" method="view">
+			<result name="input" type="redirectAction">notfound</result>
+			<result name="success">/pages/mp/cust/authmoney/view.jsp</result>
+		</action>
+	</package>
+</struts>

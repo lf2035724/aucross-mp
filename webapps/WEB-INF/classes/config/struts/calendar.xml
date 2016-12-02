@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 工作日历 -->
+<struts>
+
+	<!-- 工作日历 -->
+	<package name="calendar_workcalendar" extends="default" namespace="/mp/calendar/workcalendar">
+		<action name="list" class="workCalendarAction" method="list">
+			<result name="success">/pages/mp/calendar/workcalendar/list.jsp</result>
+		</action>
+
+		<!-- 初始化工作日历的页面 -->
+		<action name="gotoInit" class="workCalendarAction" method="gotoInit">
+			<result name="success">/pages/mp/calendar/workcalendar/init.jsp</result>
+		</action>
+
+		<!-- 初始化工作日历 -->
+		<action name="init" class="workCalendarAction" method="init">
+			<result name="success" type="redirectAction">list</result>
+			<result name="input">/pages/mp/calendar/workcalendar/init.jsp</result>
+		</action>
+
+		<!-- 修改明细 -->
+		<action name="editDetail" class="workCalendarAction" method="editDetail">
+			<result name="success">/pages/mp/calendar/workcalendar/profile.jsp</result>
+		</action>
+
+		<!-- 修改 -->
+		<action name="edit" class="workCalendarAction" method="edit">
+			<result name="success" type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="system">${systemSearch}</param>
+				<param name="workDayType">${workDayTypeSearch}</param>
+				<param name="filter_LIKESTART_S_identity">${identitySearch}</param>
+				<param name="page.number">${pageNumber}</param>
+			</result>
+		</action>
+
+		<!-- 批量修改页面 -->
+		<action name="gotoModify" class="workCalendarAction" method="gotoModify">
+			<result name="success">/pages/mp/calendar/workcalendar/modify.jsp</result>
+		</action>
+
+		<!-- 批量修改 -->
+		<action name="modifyDetail" class="workCalendarAction" method="modifyDetail">
+			<result name="success">/pages/mp/calendar/workcalendar/modifyDetail.jsp</result>
+			<result name="input">/pages/mp/calendar/workcalendar/modify.jsp</result>
+		</action>
+
+		<!-- AJAX修改 -->
+		<action name="modify" class="workCalendarAction" method="modify"></action>
+	</package>
+
+</struts>

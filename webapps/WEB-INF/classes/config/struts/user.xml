@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 门户用户 -->
+<struts>
+
+	<!-- 门户用户 -->
+	<package name="user_user" extends="default" namespace="/mp/user/user">
+		<action name="list" class="userAction" method="list">
+			<result name="success">/pages/mp/user/user/list.jsp</result>
+		</action>
+
+		<!-- 禁用或激活明细  停止使用-->
+		<action name="activateOrDisableDetail" class="userAction" method="activateOrDisableDetail">
+			<result name="success">/pages/mp/user/user/profile.jsp</result>
+		</action>
+		
+		
+		<!-- 禁用或激活  停止使用 -->
+		<action name="activateOrDisable" class="userAction" method="activateOrDisable">
+			<result name="success" type="redirectAction">freezeList</result>
+		</action>
+		<!-- 查看禁用或激活列表  停止使用-->
+		<action name="listUserChange" class="userAction" method="listUserChange">
+			<result name="success">/pages/mp/user/user/todo_audit_list.jsp</result>
+		</action>
+			<action name="todoaudit" class="userAction" method="todoAudit">
+			<result name="input" type="redirectAction">listUserChange</result>
+			<result name="success">/pages/mp/user/user/todo_audit.jsp</result>
+		</action>
+		 
+		<!-- 查看禁用或激活列表-->
+		<action name="freezeList" class="userAction" method="freezeList">
+			<result name="success">/pages/mp/user/user/freeze_list.jsp</result>
+		</action>
+		<!-- 禁用或激活用户-->
+		<action name="activateOrFreezeUser" class="userAction" method="activateOrFreezeUser">
+			<result name="success" type="redirectAction">freezeList</result>
+		</action>
+		<action name="cancelUser" class="userAction" method="cancelUser">
+			<result name="success" type="redirectAction">freezeList</result>
+		</action>
+		<action name="unCancelUser" class="userAction" method="unCancelUser">
+			<result name="success" type="redirectAction">freezeList</result>
+		</action>
+		<action name="audit" class="userAction" method="audit">
+			<result name="error" type="redirectAction">listUserChange</result>
+			<result name="input" type="redirectAction">listUserChange</result>
+			<result name="success" type="redirectAction">listUserChange</result>
+		</action>
+	</package>
+
+	<!-- 潜在客户信息 -->
+	<package name="user_potentialuser" extends="default" namespace="/mp/user/potentialuser">
+		<action name="list" class="potentialUserAction" method="list">
+			<result name="success">/pages/mp/user/potentialuser/list.jsp</result>
+		</action>
+	</package>
+
+	<!-- 安全问题及答案 -->
+	<package name="user_usersafequestion" extends="default" namespace="/mp/user/usersafequestion">
+		<action name="list" class="userSafeQuestionAction" method="list">
+			<result name="success">/pages/mp/user/usersafequestion/list.jsp</result>
+		</action>
+	</package>
+
+	<!-- 登录失败记录 -->
+	<package name="user_userloginfailure" extends="default" namespace="/mp/user/userloginfailure">
+		<action name="list" class="userLoginFailureAction" method="list">
+			<result name="success">/pages/mp/user/userloginfailure/list.jsp</result>
+		</action>
+	</package>
+
+</struts>

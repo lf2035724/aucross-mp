@@ -1,0 +1,410 @@
+/* COMMONS */
+body.portal{
+	background-color: #F7F7F7;
+}
+
+.wrapper {
+	clear: both;
+	margin: 0px auto;
+	width: 960px;
+	background-color: white;
+}
+
+div.clear{
+	clear: both;
+}
+
+/* SUBMIT */
+.submit{
+	margin-left:130px;
+}
+
+/* search highlight */
+span.highlight{
+	color: #55331C;
+	background-color: #FFFF80;
+	vertical-align: baseline;
+	padding: 0 2px 0 2px;
+}
+
+/* HEADER LAYOUT ********************/
+#portal-header{
+	background-image: url("images/logo_portal.jpg");
+}
+
+#portal-header form{
+	clear: none;
+	display: inline;
+	margin-left: 2px;
+}
+
+#portal-header .status{
+	line-height:30px;
+	height:30px;
+	vertical-align:middle;
+	background: repeat-x url("images/bg_status.jpg");
+}
+
+#portal-header .status input.search{
+	color: #D6DAD8;
+}
+
+#portal-header .status .link{
+	float: right;
+	margin-right: 2px;
+}
+
+/* LOGO */
+#portal-header .logo{
+	height: 100px;
+	line-height:100px;
+}
+
+#portal-header .logo a{
+	margin:10px 0 0 0;
+	font-size:26px;
+}
+
+/** PUBLIC PAGE HEADER */
+body.public .wrapper{
+	width: 100%;
+}
+
+.portal-header-bar{
+	height: 71px;
+	background: #F1F1F1;
+	border-bottom: 1px solid #E5E5E5;
+	overflow: hidden;
+	width: 100%;
+}
+
+.portal-header-bar .content{
+	padding: 0 44px;
+}
+
+.portal-header-bar .header .logo {
+	margin: 12px 0 0 1px;
+	float: left;
+}
+
+body.public #main{
+	margin: 0 auto;
+	max-width: 700px;
+	padding-top: 23px;
+	padding-bottom: 100px;
+}
+
+body.public #main .hideable-box{
+	margin-left: 20px;
+}
+
+body.public #main .radio-option{
+	margin-top: 1em;
+}
+
+/* FOOTER LAYOUT ********************/
+#footer {
+	clear: both;
+    margin: 0 auto;
+}
+
+#footer .wrapper{
+	background-color: white;
+}
+
+#footer p {
+	padding-top:5px;
+    font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    color: #bbb;
+    text-align: center;
+}
+
+/* BACKGROUND HEADER ********************/
+body#header{
+	
+}
+
+#header{
+	background: white url("images/bg_header.gif") repeat-x ;
+	height:68px;
+	/*border-bottom:1px solid #E5E5E8;*/
+}
+
+#header h1{
+    display: block;
+   	background: url(../../images/background/bg_logo.gif) repeat-x;
+    width: 100%;
+    float: left;
+    line-height:70px;
+    padding-left:10px;
+    font-size: 30px;
+}
+
+#header .logo{
+	position: absolute;
+	font-size: 200%;
+	padding: 1px 0px 1px 0px;
+}
+
+#header_login .logo{
+	position: absolute;
+	font-size: 200%;
+	padding: 40px 0 1em 0;
+}
+
+#header .status{
+	display:block;
+	float: none;
+	height: 40px;
+	line-height: 40px;
+}
+
+#header .status .right{
+	float: right;
+	height: 30px;
+	line-height:30px;
+	vertical-align:middle;
+	padding-right:20px;
+	background: repeat-x url("images/bg_header_status.gif") bottom;
+}
+
+#header .status .right a{
+	height: 28px;
+	line-height:28px;
+	font-size:12px;
+}
+
+#header .status .left{
+	width:23px;
+	float:right;
+	height: 30px;
+	line-height:30px;
+	background:no-repeat url("images/bg_header_status_left.gif") bottom;
+}
+
+#header select{
+	font-size: 10px;
+	line-height: 16px;
+	height:16px;
+	padding:0;
+}
+
+body#header .line{
+	height:1px;
+	line-height: 1px;
+	width: 100%;
+}
+
+body#header .line .left,body#header .line .right{
+	float:right;
+	width:20%;
+	height:1px;
+	
+	/* Chrome, Safari:*/
+    background: -webkit-gradient(linear,
+                left top, right top, from(#FFFFFF), to(#0066B2));
+                
+    /* Mozilla: */
+    background: -moz-linear-gradient(left, #FFFFFF, #0066B2);
+    
+    /* Opera */
+	background: -o-linear-gradient(left, #FFFFFF, #0066B2);
+	
+    /* MSIE */
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#FFFFFF', EndColorStr='#0066B2', GradientType=1);
+}
+
+body#header .line .left{
+	width:80%;
+	float:right;
+	/* Chrome, Safari:*/
+    background: -webkit-gradient(linear,
+                left top, right top, from(#0066B2), to(#FFFFFF));
+                
+    /* Mozilla: */
+    background: -moz-linear-gradient(left, #0066B2, #FFFFFF);
+    
+    /* Opera */
+	background: -o-linear-gradient(left, #0066B2, #FFFFFF);
+	
+    /* MSIE */
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#0066B2', EndColorStr='#FFFFFF', GradientType=1);
+}
+
+/* LOGIN */
+body#login{
+	height: 100%;
+	/*background: transparent url("../../images/background/bg_login.png") repeat-x 0 120px;*/
+}
+
+#login_panel{
+	z-index:999;
+	float:right;
+	width:100%;
+	height:100%;
+}	
+
+div#login {
+	float:right;
+	z-index:998;
+	width: 380px;
+	text-align: left;
+	/*margin: 0 auto;*/
+	margin-right:13%;
+	margin-top:13%;
+	
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Safari and Chrome */
+	border-radius: 8px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+	
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#D3D3D3,direction=145, Strength=6); 
+	box-shadow: 2px 2px 6px #999;
+	-moz-box-shadow: 2px 2px 6px #999;
+	-webkit-box-shadow: 2px 2px 6px #999;
+}
+
+#login .login_title{
+	/*min-height: 80px;*/
+}
+
+#login .login_title h3{
+	font-size:24px;
+	font-weight:normal;
+	color:#226666;
+	height: 50px;
+	line-height: 50px;
+	text-shadow: #D4F2F2 2px 2px 2px;
+}
+
+#login .login_frame{
+	background: white;
+	padding: 5px 39px 19px;
+	border-radius: 8px;
+	border: 1px solid #AAA;
+	
+}
+
+#login .login_frame .login_form ul{
+	list-style: none;
+	display: block;
+	float: none;
+}
+
+#login .login_frame .login_form ul li{
+	padding: 5px 0 5px 0;
+}
+
+#login .login_frame .login_form ul li label{
+	padding-left:1em;
+	text-align: left;
+	width: 40px;
+}
+
+#login .login_frame .login_form #login_submit{
+	/*margin-left: 77px;*/
+}
+
+body#login #login_footer{
+	width:100%;
+	text-align:center;
+	float: left;
+	position: absolute;
+	top:70%;
+	color: #CCCCCC;
+}
+
+body#login #login_footer a{
+	color: #AAAAAA;
+	text-decoration: underline;
+}
+
+body#login #paint_canvas{
+	z-index:-1;
+	float:left;
+	width:100%;
+	height:100%;
+	position:absolute;
+}
+
+body#login #paint_canvas #paint_panel{
+	height:150px;
+	margin-top:15%;
+}
+
+body#login #paint_canvas .paint_cell{
+	z-index:-2;
+	float:left;
+	height:1px;
+	width:100%;
+}
+
+
+div.summary{
+	float:right;
+	text-align:right;
+	line-height:18px;
+	margin:-6px 2em 0 0;
+	clear: both;
+	vertical-align:middle;
+}
+
+div.summary label{
+	font-weight: normal;
+	height:16px;
+	line-height:16px;
+	color:#CCCCC;
+	cursor: auto;
+}
+
+div.summary label.sum{
+	padding-left:12px;
+	background:url("../../images/background/icon_sum.png") no-repeat -4px center;
+}
+
+div.summary .currency{
+	height:16px;
+	line-height:16px;
+	font-size:14px;
+	color:#FF0000;
+	margin-right: 1em;
+}
+
+div.summary .line .left,div.summary .line .right{
+	margin-top:2px;
+	float:right;
+	width:50%;
+	height:1px;
+	
+	/* Chrome, Safari:*/
+    background: -webkit-gradient(linear,
+                left top, right top, from(#FFFFFF), to(#4C66B5));
+                
+    /* Mozilla: */
+    background: -moz-linear-gradient(left, #FFFFFF, #4C66B5);
+    
+    /* Opera */
+	background: -o-linear-gradient(left, #FFFFFF, #4C66B5);
+	
+    /* MSIE */
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#FFFFFF', EndColorStr='#4C66B5', GradientType=1);
+}
+
+div.summary .line .left{
+	/* Chrome, Safari:*/
+    background: -webkit-gradient(linear,
+                left top, right top, from(#4C66B5), to(#FFFFFF));
+                
+    /* Mozilla: */
+    background: -moz-linear-gradient(left, #4C66B5, #FFFFFF);
+    
+    /* Opera */
+	background: -o-linear-gradient(left, #4C66B5, #FFFFFF);
+	
+    /* MSIE */
+    filter: progid:DXImageTransform.Microsoft.Gradient(
+                StartColorStr='#4C66B5', EndColorStr='#FFFFFF', GradientType=1);
+}
+

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="aucross-common">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../aucross-common" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../aucross-common/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

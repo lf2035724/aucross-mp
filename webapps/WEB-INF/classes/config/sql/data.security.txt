@@ -1,0 +1,544 @@
+--REM ## 清除表数据
+DELETE FROM T_SECURITY_NAVIGATION;
+DELETE FROM T_REF_ROLE_PERMISSION;
+DELETE FROM T_SECURITY_PERMISSION;
+
+--插入权限
+
+--系统管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('系统管理','SYS_MGR','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业资料','ORG_MGR','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业资料查看','SETTINGS_ORGANIZATION_VIEWPARENT','/settings/organization/viewparent.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业资料设置','SETTINGS_ORGANIZATION_INITPARENT','/settings/organization/initparent.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('部门机构管理','PARTY_MGR','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('新建部门机构','PARTY_ORGANIZATION_EDIT','/party/organization/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('部门机构删除','PARTY_ORGANIZATION_REMOVE','/party/organization/remove.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('部门机构查询','PARTY_ORGANIZATION_LIST','/party/organization/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('登录账号','LOGIN_ACCOUNT_MGR','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑登录账户','SECURITY_ACCOUNT_EDIT','/security/account/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存登录账户','SECURITY_ACCOUNT_SAVE','/security/account/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('搜索登录账户','SECURITY_ACCOUNT_LIST','/security/account/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('修改密码','SECURITY_ACCOUNT_PASSWORD','/security/account/password.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除登录账户','SECURITY_ACCOUNT_REMOVE','/security/account/remove.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('修改登录账户角色','SECURITY_ACCOUNT_ROLE','/security/account/role.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('进入重置密码','SECURITY_ACCOUNT_PRERESET','/security/account/prereset.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('操作重置密码','SECURITY_ACCOUNT_RESETPASSWORD','/security/account/resetpassword.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('角色管理','ROLE_MGR','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑角色','SECURITY_ROLE_EDIT','/security/role/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存角色','SECURITY_ROLE_SAVE','/security/role/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('搜索角色','SECURITY_ROLE_LIST','/security/role/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除角色','SECURITY_ROLE_REMOVE','/security/role/remove.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑角色权限','SECURITY_ROLE_PERMISSION','/security/role/permission.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('日志管理','LOG_MGR','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('登录日志','SETTINGS_LOG_LOGINLIST','/settings/log/loginlist.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('操作日志','SETTINGS_LOG_LIST','/settings/log/list.do*');
+
+--客户管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('客户管理','MP_CUST','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('个人客户','CUST_PERSON_LIST','/cust/person/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业客户','CUST_ENTERPRISE','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('新增企业客户','CUST_ENTERPRISE_GOTOINPUT','/cust/enterprise/gotoInput.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业客户复核列表','CUST_ENTERPRISE_LISTWAITAUDIT','/cust/enterprise/listWaitAudit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业客户复核列表明细','CUST_ENTERPRISE_DETAIL','/cust/enterprise/detail.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业客户列表','CUST_ENTERPRISE_LIST',' /cust/enterprise/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('企业客户列表修改','CUST_ENTERPRISE_MODIFYDETAIL','/cust/enterprise/modifyDetail.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('客户银行卡','CUST_BANKCARD','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('客户银行卡列表','CUST_BANKCARD_LIST','/cust/bankcard/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('客户银行卡明细','MP_CUSTBANKCARD_BINDING_DETAIL','/mp/custbankcard/binding/detail.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('绑定企业客户银行卡列表','MP_CUSTBANKCARD_BINDING_LIST','/mp/custbankcard/binding/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('绑定企业客户银行卡','MP_CUSTBANKCARD_BINDING_GOTOBINDING','/mp/custbankcard/binding/gotoBinding.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('复核银行卡列表','MP_CUSTBANKCARD_BINDING_LISTWAITAUDIT','/mp/custbankcard/binding/listWaitAudit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('解除绑定企业客户银行卡列表','MP_CUSTBANKCARD_REMOVEBINDING_LIST','/mp/custbankcard/removebinding/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('解除绑定银行卡','MP_CUSTBANKCARD_REMOVEBINDING_LISTBINDING','/mp/custbankcard/removebinding/listBinding.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('机构管理','CUST_AGENCY','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('新增机构','MP_CUST_AGENCY_GOTOINPUT','/mp/cust/agency/gotoInput.do');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('机构明细','MP_CUST_AGENCY_DETAIL','/mp/cust/agency/detail.do');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('复核机构','MP_CUST_AGENCY_LISTWAITAUDIT','/mp/cust/agency/listWaitAudit.do');
+INSERT INTO T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) VALUES ('机构列表','MP_CUST_AGENCY_LIST','/mp/cust/agency/list.do');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户管理','MP_CUST_CUSTMERCHANT','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('创建商户','MP_CUST_CUSTMERCHANT_GOTOINPUT','/mp/cust/custmerchant/gotoInput.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户复核列表','MP_CUST_CUSTMERCHANT_LISTWAITAUDIT','/mp/cust/custmerchant/listWaitAudit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户列表','MP_CUST_CUSTMERCHANT_LIST','/mp/cust/custmerchant/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('修改商户','CUST_CUSTMERCHANT_MODIFYDETAIL','/cust/custmerchant/modifyDetail.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户明细','MP_CUST_CUSTMERCHANT_DETAIL',' /mp/cust/custmerchant/detail.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户计费','MP_FEE_FEERULE','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('计费规则列表','MP_FEE_FEERULE_LIST','/mp/fee/feerule/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('修改计费规则','MP_FEE_FEERULE_MODIFYDETAIL','/mp/fee/feerule/modifyDetail.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('计费模版列表','MP_FEE_FEETEMPLATE_LIST','/mp/fee/feetemplate/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('修改计费模版','MP_FEE_FEETEMPLATE_MODIFYDETAIL','/mp/fee/feetemplate/modifyDetail.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('新增计费规则','MP_FEE_FEERULE_GOTOINPUT','/mp/fee/feerule/gotoInput.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('新增计费模版','MP_FEE_FEETEMPLATE_GOTOINPUT','/mp/fee/feetemplate/gotoInput.do*');
+
+--门户管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('门户管理','MP_USER','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('门户用户','MP_USER_USER','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('用户列表','MP_USER_USER_LIST','/mp/user/user/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('用户列表禁用/激活','MP_USER_USER_ACTIVATEORDISABLEDETAIL','/mp/user/user/activateOrDisableDetail.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('潜在客户列表','MP_USER_POTENTIALUSER_LIST','/mp/user/potentialuser/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('门户用户安全问题列表','MP_USER_USERSAFEQUESTION_LIST','/mp/user/usersafequestion/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('登录失败日志列表','MP_USER_USERLOGINFAILURE_LIST','/mp/user/userloginfailure/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('操作日志','MP_LOG_LOGPORTAL','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('操作日志列表','MP_LOG_LOGPORTAL_LIST','/mp/log/logportal/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('人工找回密码','MP_CUST_RECOVERY','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('初审列表','MP_CUST_RECOVERY_LISTFIRSTAUDIT','/cust/recovery/listFirstAudit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('初审明细','MP_CUST_RECOVERY_DETAILOPERATE','/cust/recovery/detailOperate.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('复审列表','MP_CUST_RECOVERY_LISTREAUDIT','/cust/recovery/listReAudit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('查询列表','MP_CUST_RECOVERY_LIST','/cust/recovery/list.do*');
+
+--支付管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('支付管理','MP_ORD','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('交易订单查询','MP_ORDERQUERY_PAYMENTORDER_LIST','/mp/orderquery/paymentorder/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('提现交易查询','MP_ORDERQUERY_WITHDRAWORDE_LIST','/mp/orderquery/withdraworde/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('充值交易查询','MP_ORDERQUERY_RECHARGEORDER_LIST','/mp/orderquery/rechargeorder/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('查询支付订单','MP_ORDERQUERY_PAYORDER_LIST','/mp/orderquery/payorder/list.do*');
+
+--财务管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('账务管理','SET_ACCOUNT','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('帐户列表','SETTLEMENT_ACCOUNT_LIST','/settlement/account/list.do*');
+INSERT INTO T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) VALUES ('冻结帐户','SETTLEMENT_ACCOUNT_FREEZE','/settlement/account/freeze.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('解冻帐户','SETTLEMENT_ACCOUNT_UNFREEZE','/settlement/account/unfreeze.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('记账流水查询','MP_SETTLEMENT_ACCOUNTBILL_LIST','/mp/settlement/accountbill/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('记账接口查询','MP_SETTLEMENT_ACCOUNTBOOK_LIST','/mp/settlement/accountbook/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('冲正接口查询','MP_SETTLEMENT_ACCOUNTREVERSE_LIST','/mp/settlement/accountreverse/list.do*');
+
+--资金管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('资金管理','MP_FUN','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('提现','MP_FUNDS-MANAGEMENT_WITHDRAW','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('提现初审列表','MP_FUNDS-MANAGEMENT_WITHDRAW_FIRST-AUDIT_LIST','/mp/funds-management/withdraw/first-audit/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('提现复审列表','MP_FUNDS-MANAGEMENT_WITHDRAW_RE-AUDIT_LIST','/mp/funds-management/withdraw/re-audit/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('提现支付列表','MP_FUNDS-MANAGEMENT_WITHDRAW_PAY_LIST','/mp/funds-management/withdraw/pay/gotoList.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('充值回退','MP_FUNDS-MANAGEMENT_REVERSAL','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('充值回退待初审列表','MP_FUNDS-MANAGEMENT_REVERSAL_FIRST-AUDIT_LIST','/mp/funds-management/reversal/first-audit/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('充值回退待复审列表','MP_FUNDS-MANAGEMENT_REVERSAL_RE-AUDIT_LIST','/mp/funds-management/reversal/re-audit/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('充值回退待支付列表','MP_FUNDS-MANAGEMENT_REVERSAL_PAY_LIST','/mp/funds-management/reversal/pay/gotoList.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('支付批次列表','MP_FUNDS-MANAGEMENT_BATCH_LIST','/mp/funds-management/batch/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('支付批次列表明细','MP_FUNDS-MANAGEMENT_BATCH_FINDPAGE','/mp/funds-management/batch/findPage.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('支付批次列表导出','MP_FUNDS-MANAGEMENT_BATCH_EXPORTTXT','/mp/funds-management/batch/exportTxt.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('导入批次响应文件','MP_FUNDS-MANAGEMENT_BATCH_GOTOIMPORTTXT','/mp/funds-management/batch/gotoImportTxt.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('提现充值回退操作日志','MP_FUNDS-MANAGEMENT_LOG','/mp/funds-management/log/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔转帐','MP_TRANSFER_INPUT','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔转帐录入','MP_TRANSFER_INPUT_GOTOINPUT','/mp/transfer/input/gotoInput.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔转账复核列表','MP_TRANSFER_AUDIT_LIST','/mp/transfer/audit/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔转账支付列表','MP_TRANSFER_PAY_LIST','/mp/transfer/pay/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔线下转账确认列表','MP_TRANSFER_CONFIRM_LIST','/mp/transfer/confirm/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔转账列表','MP_TRANSFER_LIST','/mp/transfer/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔内部转账操作日志列表','MP_TRANSFER_LOG','/mp/transfer/log/list.do*');
+--资金托管
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('资金托管','MP_FUNDS-MANAGEMENT_TRUSTFUND','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('资金划拨列表','MP_FUNDS-MANAGEMENT_TRUSTFUND_LIST','/mp/funds-management/trustfund/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('白名单列表','MP_FUNDS-MANAGEMENT_TRUSTFUND_WHITE','/mp/funds-management/trustfund/white.do*');
+
+--清结算管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('清结算管理','SET_BANKBILL','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('网银对账','SETTLEMENT_BANKBILL','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('文件导入','SETTLEMENT_BANKBILL_EDIT','/settlement/bankbill/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('导入列表','SETTLEMENT_BANKBILL_LIST','/settlement/bankbill/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('明细列表','SETTLEMENT_BANKBILL_LISTDETAIL','/settlement/bankbill/listdetail.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('数据审核','SETTLEMENT_BANKBILL_LISTTODOAUDIT','/settlement/bankbill/listtodoaudit.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户交易日报表','MP_SETTLEMENT_FUNDMTCDAYREPORT_TRALIST','/mp/settlement/fundmtcdayreport/tralist.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('运维日报表','MP_SETTLEMENT_FUNDMTCDAYREPORT_LIST','/mp/settlement/fundmtcdayreport/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('资金结算报表','MP_SETTLEMENT_FUNDMTCDAYREPORT','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('申购类查询','MP_SETTLEMENT_FUNDMTCDAYREPORT_MERCLELIST','/mp/settlement/fundmtcdayreport/merclelist.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('赎回类查询','MP_SETTLEMENT_FUNDMTCDAYREPORT_MERLIST','/mp/settlement/fundmtcdayreport/merlist.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('扎差结果查询','MP_SETTLEMENT_NETTING_LIST','/mp/settlement/netting/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户结算报表','MP_SETTLEMENT_MERCHANT_LIST','/mp/settlement/merchant/list.do*');
+
+--基金管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('基金管理','MP_FUND','');
+
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('业务状态查询','MP_FUND_BUSINESS_LIST','/mp/fund/business/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('赎回到账','MP_FUND_REDEMPTION','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('信息查询','MP_FUND_REDEMPTION_LIST','/mp/fund/redemption/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('明细查询','MP_FUND_REDEMPTION_QUERYDETAIL','/mp/fund/redemption/queryDetail.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('监管行回执','MP_FUND_BANKBILL','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('汇总信息','MP_FUND_BANKBILL_TOTAL_LIST','/mp/fund/bankbilltotal/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('详细信息','MP_FUND_BANKBILL_DETAIL_LIST','/mp/fund/bankbilldetail/list.do*');
+
+--风控管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('风控管理','RISK_PARAM','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑参数','RISK_PARAM_EDIT','/risk/param/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存参数','RISK_PARAM_SAVE','/risk/param/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('参数列表','RISK_PARAM_LIST','/risk/param/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除参数','RISK_PARAM_REMOVE','/risk/param/remove.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑黑名单','RISK_BLACKWHITE_EDIT','/risk/blackwhite/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存黑名单','RISK_BLACKWHITE_SAVE','/risk/blackwhite/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('黑名单列表','RISK_BLACKWHITE_LIST','/risk/blackwhite/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除黑名单','RISK_BLACKWHITE_REMOVE','/risk/blackwhite/remove.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('单笔超限监控','RISK_MONITOR_SINGLELIST','/risk/monitor/singlelist.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('累计超限监控','RISK_MONITOR_TOTALLIST','/risk/monitor/totallist.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('风控业务数据','RISK_MONITOR_DATALIST','/risk/monitor/datalist.do*');
+
+--基础管理
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('基础管理','BAS_MGR','');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('基础数据','MP_BASIC','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('地理区域','SETTINGS_GEO_LIST','/settings/geo/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('银行类型','MP_BASIC_BANTYPE_LIST','/mp/basic/banType/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('账户类型','MP_BASIC_ACCTYPE_LIST','/mp/basic/accType/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('交易类型','MP_BASIC_BUSTYPE_LIST','/mp/basic/busType/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('系统参数','SETTINGS_PARAM_LIST','/settings/param/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑系统参数','SETTINGS_PARAM_EDIT','/settings/param/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存系统参数','SETTINGS_PARAM_SAVE','/settings/param/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑安全问题','MP_BASIC_SECURE_EDIT','/mp/basic/secure/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存安全问题','MP_BASIC_SECURE_SAVE','/mp/basic/secure/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('查询安全问题','MP_BASIC_SECURE_LIST','/mp/basic/secure/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除安全问题','MP_BASIC_SECURE_REMOVE','/mp/basic/secure/remove.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑外部邮箱地址','MP_BASIC_EMAILTYPE_EDIT','/mp/basic/emailType/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存外部邮箱地址','MP_BASIC_EMAILTYPE_SAVE','/mp/basic/emailType/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('查询外部邮箱地址','MP_BASIC_EMAILTYPE_LIST','/mp/basic/emailType/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除外部邮箱地址','MP_BASIC_EMAILTYPE_DELETE','/mp/basic/emailType/delete.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('工作日历','MP_CALENDAR','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('工作日历列表','MP_CALENDAR_WORKCALENDAR_LIST','/mp/calendar/workcalendar/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('工作日历初始化','MP_CALENDAR_WORKCALENDAR_GOTOINIT','/mp/calendar/workcalendar/gotoinit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('工作日历修改','MP_CALENDAR_WORKCALENDAR_GOTOMODIFY','/mp/calendar/workcalendar/gotoModify.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('邮件服务','MP_SETTINGS_EMAIL','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('邮件内容','MP_SETTINGS_EMAIL_LIST','/mp/settings/email/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('计划任务','SETTINGS_SCHEDULER','');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('时钟列表','SETTINGS_SCHEDULER_LIST','/settings/scheduler/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('启用/禁用任务','SETTINGS_SCHEDULER_TOGGLE','/settings/scheduler/toggle.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('批处理计划','SETTINGS_PLAN_LIST','/settings/plan/list.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('银行账户列表','SETTLEMENT_BANKACCOUNT_LIST','/settlement/bankaccount/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑银行账户','SETTLEMENT_BANKACCOUNT_EDIT','/settlement/bankaccount/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存银行账户','SETTLEMENT_BANKACCOUNT_SAVE','/settlement/bankaccount/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除银行账户','SETTLEMENT_BANKACCOUNT_REMOVE','/settlement/bankaccount/remove.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('虚户资金限额列表','MP_BASIC_FUNDSLIMIT_LIST','/mp/basic/fundsLimit/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑虚户资金限额','MP_BASIC_FUNDSLIMIT_EDIT','/mp/basic/fundsLimit/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存虚户资金限额','MP_BASIC_FUNDSLIMIT_SAVE','/mp/basic/fundsLimit/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除虚户资金限额','MP_BASIC_FUNDSLIMIT_DELETE','/mp/basic/fundsLimit/delete.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('银行资金限额列表','MP_BASIC_FUNDSLIMITBANK_LIST','/mp/basic/fundsLimitBank/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑银行资金限额','MP_BASIC_FUNDSLIMITBANK_EDIT','/mp/basic/fundsLimitBank/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存银行资金限额','MP_BASIC_FUNDSLIMITBANK_SAVE','/mp/basic/fundsLimitBank/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除银行资金限额','MP_BASIC_FUNDSLIMITBANK_DELETE','/mp/basic/fundsLimitBank/delete.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('活期存款利率列表','MP_BASIC_INTERSTRATE_LIST','/mp/basic/interstRate/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑活期存款利率','MP_BASIC_INTERSTRATE_EDIT','/mp/basic/interstRate/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存活期存款利率','MP_BASIC_INTERSTRATE_SAVE','/mp/basic/interstRate/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除活期存款利率','MP_BASIC_INTERSTRATE_DELETE','/mp/basic/interstRate/delete.do*');
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('结算日历列表','MP_BASIC_INTERSTCALENDER_LIST','/mp/basic/interstCalender/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑结算日历','MP_BASIC_INTERSTCALENDER_EDIT','/mp/basic/interstCalender/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存结算日历','MP_BASIC_INTERSTCALENDER_SAVE','/mp/basic/interstCalender/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除结算日历','MP_BASIC_INTERSTCALENDER_DELETE','/mp/basic/interstCalender/delete.do*');
+
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('渠道参数列表','MP_BASIC_CHANNELPARM_LIST','/mp/basic/channelparm/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑渠道参数','MP_BASIC_CHANNELPARM_EDIT','/mp/basic/channelparm/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存渠道参数','MP_BASIC_CHANNELPARM_SAVE','/mp/basic/channelparm/save.do*');
+
+
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('商户类别码列表','MP_BASIC_MCC_LIST','/mp/basic/mcc/list.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('编辑商户类别码','MP_BASIC_MCC_EDIT','/mp/basic/mcc/edit.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('保存商户类别码','MP_BASIC_MCC_SAVE','/mp/basic/mcc/save.do*');
+Insert into T_SECURITY_PERMISSION (DESCRIPTION,TOKEN,URL) values ('删除商户类别码','MP_BASIC_MCC_REMOVE','/mp/basic/mcc/remove.do*');
+
+--插入权限导航
+
+--系统管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-00-00',null,1,sysdate,'系统管理','SYS_MGR');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-01-00','01-00-00',1,sysdate,'企业资料','ORG_MGR');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-01-01','01-01-00',1,sysdate,'企业资料查询','SETTINGS_ORGANIZATION_VIEWPARENT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-01-02','01-01-00',2,sysdate,'企业资料设置','SETTINGS_ORGANIZATION_INITPARENT');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-02-00','01-00-00',2,sysdate,'部门机构管理','PARTY_MGR');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-02-01','01-02-00',1,sysdate,'新建部门机构','PARTY_ORGANIZATION_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-02-02','01-02-00',2,sysdate,'部门机构删除','PARTY_ORGANIZATION_REMOVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-02-03','01-02-00',3,sysdate,'部门机构查询','PARTY_ORGANIZATION_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-00','01-00-00',3,sysdate,'登录账号','LOGIN_ACCOUNT_MGR');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-01','01-03-00',1,sysdate,'修改密码','SECURITY_ACCOUNT_PASSWORD');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-02','01-03-00',2,sysdate,'编辑登录账号','SECURITY_ACCOUNT_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-03','01-03-00',3,sysdate,'删除登录账号','SECURITY_ACCOUNT_REMOVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-04','01-03-00',4,sysdate,'搜索登录账号','SECURITY_ACCOUNT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-05','01-03-00',5,sysdate,'修改登录账户角色','SECURITY_ACCOUNT_ROLE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-06','01-03-00',6,sysdate,'保存登录账号','SECURITY_ACCOUNT_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-07','01-03-00',7,sysdate,'进入重置密码','SECURITY_ACCOUNT_PRERESET');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-03-08','01-03-00',8,sysdate,'操作重置密码','SECURITY_ACCOUNT_RESETPASSWORD');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-04-00','01-00-00',4,sysdate,'角色管理','ROLE_MGR');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-04-01','01-04-00',1,sysdate,'编辑角色','SECURITY_ROLE_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-04-02','01-04-00',2,sysdate,'搜索角色','SECURITY_ROLE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-04-03','01-04-00',3,sysdate,'删除角色','SECURITY_ROLE_REMOVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-04-04','01-04-00',4,sysdate,'编辑角色权限','SECURITY_ROLE_PERMISSION');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-04-05','01-04-00',5,sysdate,'保存角色','SECURITY_ROLE_SAVE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-05-00','01-00-00',5,sysdate,'日志管理','LOG_MGR');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-05-01','01-05-00',1,sysdate,'登录日志','SETTINGS_LOG_LOGINLIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('01-05-02','01-05-00',2,sysdate,'操作日志','SETTINGS_LOG_LIST');
+
+--客户管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-00-00',null,2,sysdate,'客户管理','MP_CUST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-01-00','02-00-00',1,sysdate,'个人客户','CUST_PERSON_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-02-00','02-00-00',2,sysdate,'企业客户','CUST_ENTERPRISE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-02-01','02-02-00',1,sysdate,'新增企业客户','CUST_ENTERPRISE_GOTOINPUT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-02-02','02-02-00',2,sysdate,'企业客户复核列表','CUST_ENTERPRISE_LISTWAITAUDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-02-03','02-02-00',3,sysdate,'企业客户复核列表明细','CUST_ENTERPRISE_DETAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-02-04','02-02-00',4,sysdate,'企业客户列表','CUST_ENTERPRISE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-02-05','02-02-00',5,sysdate,'企业客户列表修改','CUST_ENTERPRISE_MODIFYDETAIL');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-00','02-00-00',3,sysdate,'客户银行卡','CUST_BANKCARD');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-01','02-03-00',1,sysdate,'客户银行卡列表','CUST_BANKCARD_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-02','02-03-00',2,sysdate,'客户银行卡明细','MP_CUSTBANKCARD_BINDING_DETAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-03','02-03-00',3,sysdate,'绑定企业客户银行卡列表','MP_CUSTBANKCARD_BINDING_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-04','02-03-00',4,sysdate,'绑定企业客户银行卡','MP_CUSTBANKCARD_BINDING_GOTOBINDING');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-05','02-03-00',5,sysdate,'复核银行卡列表','MP_CUSTBANKCARD_BINDING_LISTWAITAUDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-06','02-03-00',6,sysdate,'解除绑定企业客户银行卡列表','MP_CUSTBANKCARD_REMOVEBINDING_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-03-07','02-03-00',7,sysdate,'解除绑定银行卡','MP_CUSTBANKCARD_REMOVEBINDING_LISTBINDING');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-04-00','02-00-00',4,sysdate,'机构管理','CUST_AGENCY');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-04-01','02-04-00',1,sysdate,'新增机构','MP_CUST_AGENCY_GOTOINPUT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-04-02','02-04-00',2,sysdate,'机构明细','MP_CUST_AGENCY_DETAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-04-03','02-04-00',3,sysdate,'复核机构','MP_CUST_AGENCY_LISTWAITAUDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-04-04','02-04-00',4,sysdate,'机构列表','MP_CUST_AGENCY_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-05-00','02-00-00',5,sysdate,'商户管理','MP_CUST_CUSTMERCHANT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-05-01','02-05-00',1,sysdate,'创建商户','MP_CUST_CUSTMERCHANT_GOTOINPUT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-05-02','02-05-00',2,sysdate,'商户复核列表','MP_CUST_CUSTMERCHANT_LISTWAITAUDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-05-03','02-05-00',3,sysdate,'商户列表','MP_CUST_CUSTMERCHANT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-05-04','02-05-00',4,sysdate,'修改商户','CUST_CUSTMERCHANT_MODIFYDETAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-05-05','02-05-00',5,sysdate,'商户明细','MP_CUST_CUSTMERCHANT_DETAIL');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-06-00','02-00-00',6,sysdate,'商户计费','MP_FEE_FEERULE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-06-01','02-06-00',1,sysdate,'计费规则列表','MP_FEE_FEERULE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-06-02','02-06-00',2,sysdate,'修改计费规则','MP_FEE_FEERULE_MODIFYDETAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-06-03','02-06-00',3,sysdate,'计费模版列表','MP_FEE_FEETEMPLATE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-06-04','02-06-00',4,sysdate,'修改计费模版','MP_FEE_FEETEMPLATE_MODIFYDETAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-06-05','02-06-00',5,sysdate,'新增计费规则','MP_FEE_FEERULE_GOTOINPUT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('02-06-06','02-06-00',6,sysdate,'新增计费模版','MP_FEE_FEETEMPLATE_GOTOINPUT');
+
+--门户管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-00-00',null,3,sysdate,'门户管理','MP_USER');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-01-00','03-00-00',1,sysdate,'门户用户','MP_USER_USER');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-01-01','03-01-00',1,sysdate,'用户列表','MP_USER_USER_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-01-02','03-01-00',2,sysdate,'用户列表禁用/激活','MP_USER_USER_ACTIVATEORDISABLEDETAIL');
+--Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-01-03','03-01-00',3,sysdate,'潜在客户列表','MP_USER_POTENTIALUSER_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-01-04','03-01-00',4,sysdate,'门户用户安全问题列表','MP_USER_USERSAFEQUESTION_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-01-05','03-01-00',5,sysdate,'登录失败日志列表','MP_USER_USERLOGINFAILURE_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-02-00','03-00-00',2,sysdate,'操作日志','MP_LOG_LOGPORTAL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-02-01','03-02-00',1,sysdate,'操作日志列表','MP_LOG_LOGPORTAL_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-03-00','03-00-00',3,sysdate,'人工找回密码','MP_CUST_RECOVERY');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-03-01','03-03-00',1,sysdate,'初审列表','MP_CUST_RECOVERY_LISTFIRSTAUDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-03-02','03-03-00',2,sysdate,'初审明细','MP_CUST_RECOVERY_DETAILOPERATE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-03-03','03-03-00',3,sysdate,'复审列表','MP_CUST_RECOVERY_LISTREAUDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('03-03-04','03-03-00',4,sysdate,'查询列表','MP_CUST_RECOVERY_LIST');
+
+--支付管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('04-00-00',null,4,sysdate,'支付管理','MP_ORD');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('04-01-00','04-00-00',1,sysdate,'交易订单查询','MP_ORDERQUERY_PAYMENTORDER_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('04-02-00','04-00-00',2,sysdate,'提现交易查询','MP_ORDERQUERY_WITHDRAWORDE_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('04-03-00','04-00-00',3,sysdate,'充值交易查询','MP_ORDERQUERY_RECHARGEORDER_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('04-04-00','04-00-00',4,sysdate,'查询支付订单','MP_ORDERQUERY_PAYORDER_LIST');
+
+--财务管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('05-00-00',null,5,sysdate,'账务管理','SET_ACCOUNT');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('05-01-00','05-00-00',1,sysdate,'帐户列表','SETTLEMENT_ACCOUNT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('05-02-00','05-00-00',2,sysdate,'冻结帐户','SETTLEMENT_ACCOUNT_FREEZE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('05-03-00','05-00-00',3,sysdate,'解冻帐户','SETTLEMENT_ACCOUNT_UNFREEZE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('05-04-00','05-00-00',4,sysdate,'记账流水查询','MP_SETTLEMENT_ACCOUNTBILL_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('05-05-00','05-00-00',5,sysdate,'记账接口查询','MP_SETTLEMENT_ACCOUNTBOOK_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('05-06-00','05-00-00',6,sysdate,'冲正接口查询','MP_SETTLEMENT_ACCOUNTREVERSE_LIST');
+
+--资金管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-00-00',null,6,sysdate,'资金管理','MP_FUN');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-01-00','06-00-00',1,sysdate,'提现','MP_FUNDS-MANAGEMENT_WITHDRAW');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-01-01','06-01-00',1,sysdate,'提现初审列表','MP_FUNDS-MANAGEMENT_WITHDRAW_FIRST-AUDIT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-01-02','06-01-00',2,sysdate,'提现复审列表','MP_FUNDS-MANAGEMENT_WITHDRAW_RE-AUDIT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-01-03','06-01-00',3,sysdate,'提现支付列表','MP_FUNDS-MANAGEMENT_WITHDRAW_PAY_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-02-00','06-00-00',2,sysdate,'充值回退','MP_FUNDS-MANAGEMENT_REVERSAL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-02-01','06-02-00',1,sysdate,'充值回退待初审列表','MP_FUNDS-MANAGEMENT_REVERSAL_FIRST-AUDIT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-02-02','06-02-00',2,sysdate,'充值回退待复审列表','MP_FUNDS-MANAGEMENT_REVERSAL_RE-AUDIT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-02-03','06-02-00',3,sysdate,'充值回退待支付列表','MP_FUNDS-MANAGEMENT_REVERSAL_PAY_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-03-00','06-00-00',3,sysdate,'支付批次列表','MP_FUNDS-MANAGEMENT_BATCH_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-03-01','06-03-00',1,sysdate,'支付批次列表明细','MP_FUNDS-MANAGEMENT_BATCH_FINDPAGE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-03-02','06-03-00',1,sysdate,'支付批次列表导出','MP_FUNDS-MANAGEMENT_BATCH_EXPORTTXT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-03-03','06-03-00',1,sysdate,'导入批次响应文件','MP_FUNDS-MANAGEMENT_BATCH_GOTOIMPORTTXT');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-04-00','06-00-00',4,sysdate,'提现充值回退操作日志','MP_FUNDS-MANAGEMENT_LOG');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-05-00','06-00-00',5,sysdate,'单笔转帐','MP_TRANSFER_INPUT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-05-01','06-05-00',1,sysdate,'单笔转帐录入','MP_TRANSFER_INPUT_GOTOINPUT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-05-02','06-05-00',2,sysdate,'单笔转账复核列表','MP_TRANSFER_AUDIT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-05-03','06-05-00',3,sysdate,'单笔转账支付列表','MP_TRANSFER_PAY_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-05-04','06-05-00',4,sysdate,'单笔线下转账确认列表','MP_TRANSFER_CONFIRM_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-05-05','06-05-00',5,sysdate,'单笔转账列表','MP_TRANSFER_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-05-06','06-05-00',6,sysdate,'单笔内部转账操作日志列表','MP_TRANSFER_LOG');
+
+--资金托管
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-08-00','06-00-00',8,sysdate,'资金托管','MP_FUNDS-MANAGEMENT_TRUSTFUND');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-08-01','06-08-00',1,sysdate,'划拨记录列表','MP_FUNDS-MANAGEMENT_TRUSTFUND_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('06-08-02','06-08-00',2,sysdate,'白名单列表','MP_FUNDS-MANAGEMENT_TRUSTFUND_WHITE');
+
+--清结算管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-00-00',null,7,sysdate,'清结算管理','SET_BANKBILL');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-01-00','07-00-00',1,sysdate,'网银对账','SETTLEMENT_BANKBILL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-01-01','07-01-00',1,sysdate,'文件导入','SETTLEMENT_BANKBILL_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-01-02','07-01-00',2,sysdate,'导入列表','SETTLEMENT_BANKBILL_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-01-03','07-01-00',3,sysdate,'明细列表','SETTLEMENT_BANKBILL_LISTDETAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-01-04','07-01-00',4,sysdate,'数据审核','SETTLEMENT_BANKBILL_LISTTODOAUDIT');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-02-00','07-00-00',2,sysdate,'商户交易日报表','MP_SETTLEMENT_FUNDMTCDAYREPORT_TRALIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-03-00','07-00-00',3,sysdate,'运维日报表','MP_SETTLEMENT_FUNDMTCDAYREPORT_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-04-00','07-00-00',4,sysdate,'资金结算报表','MP_SETTLEMENT_FUNDMTCDAYREPORT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-04-01','07-04-00',1,sysdate,'申购类查询','MP_SETTLEMENT_FUNDMTCDAYREPORT_MERCLELIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-04-02','07-04-00',2,sysdate,'赎回类查询','MP_SETTLEMENT_FUNDMTCDAYREPORT_MERLIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-05-00','07-00-00',5,sysdate,'扎差结果查询','MP_SETTLEMENT_NETTING_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('07-06-00','07-00-00',6,sysdate,'商户结算报表','MP_SETTLEMENT_MERCHANT_LIST');
+
+--基金管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-00-00',null,8,sysdate,'基金管理','MP_FUND');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-01-00','08-00-00',1,sysdate,'业务状态查询','MP_FUND_BUSINESS_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-02-00','08-00-00',2,sysdate,'赎回到账','MP_FUND_REDEMPTION');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-02-01','08-02-00',1,sysdate,'信息查询','MP_FUND_REDEMPTION_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-02-02','08-02-00',2,sysdate,'明细查询','MP_FUND_REDEMPTION_QUERYDETAIL');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-03-00','08-00-00',3,sysdate,'监管行回执','MP_FUND_BANKBILL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-03-01','08-03-00',1,sysdate,'汇总信息','MP_FUND_BANKBILL_TOTAL_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('08-03-02','08-03-00',2,sysdate,'详细信息','MP_FUND_BANKBILL_DETAIL_LIST');
+
+--风控管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-00-00',null,9,sysdate,'风控管理','RISK_PARAM');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-01-00','09-00-00',1,sysdate,'风控参数','RISK_PARAM_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-01-01','09-01-00',1,sysdate,'编辑参数','RISK_PARAM_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-01-02','09-01-00',2,sysdate,'保存参数','RISK_PARAM_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-01-03','09-01-00',3,sysdate,'删除参数','RISK_PARAM_REMOVE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-02-00','09-00-00',2,sysdate,'黑白名单','RISK_BLACKWHITE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-02-01','09-02-00',1,sysdate,'编辑黑名单','RISK_BLACKWHITE_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-02-02','09-02-00',2,sysdate,'保存黑名单','RISK_BLACKWHITE_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-02-03','09-02-00',3,sysdate,'删除黑名单','RISK_BLACKWHITE_REMOVE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-03-00','09-00-00',3,sysdate,'单笔超限监控','RISK_MONITOR_SINGLELIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-04-00','09-00-00',4,sysdate,'累计超限监控','RISK_MONITOR_TOTALLIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('09-05-00','09-00-00',5,sysdate,'风控业务数据','RISK_MONITOR_DATALIST');
+
+--基础管理
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-00-00',null,10,sysdate,'基础管理','BAS_MGR');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-00','10-00-00',1,sysdate,'基础数据','MP_BASIC');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-01','10-01-00',1,sysdate,'地理区域','SETTINGS_GEO_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-02','10-01-00',2,sysdate,'银行类型','MP_BASIC_BANTYPE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-03','10-01-00',3,sysdate,'账户类型','MP_BASIC_ACCTYPE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-04','10-01-00',4,sysdate,'交易类型','MP_BASIC_BUSTYPE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-05','10-01-00',5,sysdate,'系统参数','SETTINGS_PARAM_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-06','10-01-00',6,sysdate,'编辑系统参数','SETTINGS_PARAM_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-07','10-01-00',7,sysdate,'保存系统参数','SETTINGS_PARAM_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-08','10-01-00',8,sysdate,'编辑安全问题','MP_BASIC_SECURE_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-09','10-01-00',9,sysdate,'保存安全问题','MP_BASIC_SECURE_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-10','10-01-00',10,sysdate,'查询安全问题','MP_BASIC_SECURE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-11','10-01-00',11,sysdate,'删除安全问题','MP_BASIC_SECURE_REMOVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-12','10-01-00',12,sysdate,'编辑外部邮箱地址','MP_BASIC_EMAILTYPE_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-13','10-01-00',13,sysdate,'保存外部邮箱地址','MP_BASIC_EMAILTYPE_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-14','10-01-00',14,sysdate,'查询外部邮箱地址','MP_BASIC_EMAILTYPE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-01-15','10-01-00',15,sysdate,'删除外部邮箱地址','MP_BASIC_EMAILTYPE_DELETE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-02-00','10-00-00',2,sysdate,'工作日历','MP_CALENDAR');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-02-01','10-02-00',1,sysdate,'工作日历列表','MP_CALENDAR_WORKCALENDAR_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-02-02','10-02-00',2,sysdate,'工作日历初始化','MP_CALENDAR_WORKCALENDAR_GOTOINIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-02-03','10-02-00',3,sysdate,'工作日历修改','MP_CALENDAR_WORKCALENDAR_GOTOMODIFY');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-03-00','10-00-00',3,sysdate,'邮件服务','MP_SETTINGS_EMAIL');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-03-01','10-03-00',1,sysdate,'邮件内容','MP_SETTINGS_EMAIL_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-04-00','10-00-00',4,sysdate,'计划任务','SETTINGS_SCHEDULER');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-04-01','10-04-00',1,sysdate,'时钟列表','SETTINGS_SCHEDULER_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-04-02','10-04-00',2,sysdate,'启用/禁用任务','SETTINGS_SCHEDULER_TOGGLE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-04-03','10-04-00',3,sysdate,'批处理计划','SETTINGS_PLAN_LIST');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-05-00','10-00-00',5,sysdate,'银行账户列表','SETTLEMENT_BANKACCOUNT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-05-01','10-05-00',1,sysdate,'编辑银行账户','SETTLEMENT_BANKACCOUNT_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-05-02','10-05-00',2,sysdate,'保存银行账户','SETTLEMENT_BANKACCOUNT_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-05-03','10-05-00',3,sysdate,'删除银行账户','SETTLEMENT_BANKACCOUNT_REMOVE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-06-00','10-00-00',6,sysdate,'虚户资金限额列表','MP_BASIC_FUNDSLIMIT_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-06-01','10-06-00',1,sysdate,'编辑虚户资金限额','MP_BASIC_FUNDSLIMIT_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-06-02','10-06-00',2,sysdate,'保存虚户资金限额','MP_BASIC_FUNDSLIMIT_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-06-03','10-06-00',3,sysdate,'删除虚户资金限额','MP_BASIC_FUNDSLIMIT_DELETE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-07-00','10-00-00',7,sysdate,'活期存款利率列表','MP_BASIC_INTERSTRATE_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-07-01','10-07-00',1,sysdate,'编辑活期存款利率','MP_BASIC_INTERSTRATE_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-07-02','10-07-00',2,sysdate,'保存活期存款利率','MP_BASIC_INTERSTRATE_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-07-03','10-07-00',3,sysdate,'删除活期存款利率','MP_BASIC_INTERSTRATE_DELETE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-08-00','10-00-00',8,sysdate,'结算日历列表','MP_BASIC_INTERSTCALENDER_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-08-01','10-08-00',1,sysdate,'编辑结算日历','MP_BASIC_INTERSTCALENDER_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-08-02','10-08-00',2,sysdate,'保存结算日历','MP_BASIC_INTERSTCALENDER_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-08-03','10-08-00',3,sysdate,'删除结算日历','MP_BASIC_INTERSTCALENDER_DELETE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-09-00','10-00-00',9,sysdate,'渠道参数列表','MP_BASIC_CHANNELPARM_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-09-01','10-09-00',1,sysdate,'编辑渠道参数','MP_BASIC_CHANNELPARM_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-09-02','10-09-00',2,sysdate,'保存渠道参数','MP_BASIC_CHANNELPARM_SAVE');
+
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-10-00','10-00-00',10,sysdate,'商户类别码列表','MP_BASIC_MCC_LIST');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-10-01','10-10-00',1,sysdate,'编辑商户类别码','MP_BASIC_MCC_EDIT');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-10-02','10-10-00',2,sysdate,'保存商户类别码','MP_BASIC_MCC_SAVE');
+Insert into T_SECURITY_NAVIGATION (ID,PARENT_ID,SEQUENCE,CREATED_TIME,NAME,PERMISSION_ID) values ('10-10-03','10-10-00',3,sysdate,'删除商户类别码','MP_BASIC_MCC_REMOVE');
+
+commit;
+
+

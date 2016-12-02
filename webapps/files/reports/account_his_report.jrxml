@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="assets_liabilities" pageWidth="850" pageHeight="842" columnWidth="810" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="accountDate" class="java.lang.Object"/>
+	<field name="left.flow" class="java.lang.String"/>
+	<field name="right.flow" class="java.lang.String">
+		<fieldDescription><![CDATA[流动负债]]></fieldDescription>
+	</field>
+	<field name="left.beginYearNo" class="java.lang.Long">
+		<fieldDescription><![CDATA[年初次]]></fieldDescription>
+	</field>
+	<field name="right.beginYearNo" class="java.lang.Long">
+		<fieldDescription><![CDATA[年初次]]></fieldDescription>
+	</field>
+	<field name="left.endYearNo" class="java.lang.Long"/>
+	<field name="right.endYearNo" class="java.lang.Long"/>
+	<field name="aLevelSubjectsLeft.beginYearNo" class="java.lang.Long"/>
+	<field name="aLevelSubjectsLeft.endYearNo" class="java.lang.Long"/>
+	<field name="aLevelSubjectsRight.beginYearNo" class="java.lang.Long"/>
+	<field name="aLevelSubjectsRight.endYearNo" class="java.lang.Long"/>
+	<variable name="totalPageNumber" class="java.lang.Integer" calculation="Highest">
+		<variableExpression><![CDATA[$V{PAGE_NUMBER}]]></variableExpression>
+	</variable>
+	<variable name="leftBeginSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{left.beginYearNo}]]></variableExpression>
+	</variable>
+	<variable name="leftEndSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{left.endYearNo}]]></variableExpression>
+	</variable>
+	<variable name="aLevelSubjectsLeftBeginSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{aLevelSubjectsLeft.beginYearNo}]]></variableExpression>
+	</variable>
+	<variable name="aLevelSubjectsLeftEndSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{aLevelSubjectsLeft.endYearNo}]]></variableExpression>
+	</variable>
+	<variable name="aLevelSubjectsRightBeginSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{aLevelSubjectsRight.beginYearNo}]]></variableExpression>
+	</variable>
+	<variable name="aLevelSubjectsRightEndSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{aLevelSubjectsRight.endYearNo}]]></variableExpression>
+	</variable>
+	<variable name="rightBeginSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{right.beginYearNo}]]></variableExpression>
+	</variable>
+	<variable name="rightEndSum" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{right.endYearNo}]]></variableExpression>
+	</variable>
+	
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="315" y="0" width="209" height="28"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[资产三级科目日查询报表]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="691" y="27" width="104" height="17"/>
+				<textElement textAlignment="Right">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[会企01表]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="44" width="810" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="220" height="14"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[编制单位名称：证联支付有限责任公司]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="696" y="5" width="100" height="13"/>
+				<textElement textAlignment="Right">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[单位：元]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="511" y="4" width="100" height="15"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{accountDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="220" height="44" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="186" height="44"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[金额]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="626" y="0" width="186" height="44"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[金额]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="0" width="220" height="44" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="220" height="20"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isStrikeThrough="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{left.flow}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="0" width="186" height="20"/>
+				<box leftPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getNumberInstance().format($F{left.endYearNo}/100d)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="406" y="0" width="220" height="20"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{right.flow}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="626" y="0" width="186" height="20"/>
+				<box leftPadding="4">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getNumberInstance().format($F{right.endYearNo}/100d)]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="703" y="4" width="15" height="15"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[页:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="717" y="4" width="25" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="741" y="4" width="14" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="754" y="4" width="25" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{totalPageNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+       <field name="secure.question" >
+		<field-validator type="requiredstring">
+            <message>“安全问题”为必填项！</message>
+        </field-validator>
+       <field name="secure.number" >
+		<field-validator type="requiredstring">
+            <message>“显示顺序”必须为整数！</message>
+        </field-validator>
+</validators>

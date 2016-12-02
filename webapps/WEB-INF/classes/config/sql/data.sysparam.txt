@@ -1,0 +1,156 @@
+--------------------------------------------------------
+-- [01]系统参数 T_SYSTEM_PARAM
+--------------------------------------------------------
+--清除数据
+delete from t_system_param;
+commit;
+
+--==商城参数==--
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'MALL','SECURITY','CODE','1234',1,'商城加签的安全码',sysdate);
+  
+--==门户参数==--
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','SYSTEM_CODE','MALL','http://114.242.101.108:8080/zlrt-mall/pay/finishBankPay.html',1,'商城前置前台回调地址',sysdate);
+  
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','SYSTEM_CODE','FUND','http://114.242.101.109:7082/zlrt-fund/fundofs/page/subscriok',1,'基金前置前台回调地址',sysdate);
+  
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_CAN_BACK_TIME','3',1,'每天可充值回退次数',sysdate);
+
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_CAN_LOGIN_FAIL_TIME','3',1,'登陆失败锁定次数',sysdate);
+
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_FINDPASSWORD_RETURN_URL','http://localhost:8079/portal/findpassword/loginpassword.html?id=',1,'门户个人客户人工找回密码URL',sysdate);
+
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_FIND_LOGIN_PASSWORD_MIN','20',1,'找回登陆密码失败锁定时间(分钟)',sysdate);
+
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_FIND_LOGIN_PASSWORD_TIME','5',1,'找回登陆密码最大错误次数',sysdate);
+
+ insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_FIND_PAY_PASSWORD_TIME','3',1,'找回支付密码最大错误次数',sysdate);
+  
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_LOGIN_LOCK_TIME','20',1,'登陆失败锁定时间(分钟)',sysdate);
+
+ insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_SAFE_ANSWER_MIN','20',1,'安保问题失败锁定时间(分钟)',sysdate);
+  
+ insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_SAFE_ANSWER_TIME','5',1,'安保问题最大错误次数',sysdate);
+  
+ insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'PORTAL','DEF','PARAM_VALUE_WITHDRAW_TIME','5',1,'每天可提现次数',sysdate);
+  
+--==管理平台参数==--
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'MP','EMAIL_QUEUE','MAX_SEND_COUNT','20',1,'邮件发送失败,最大重发次数',sysdate);
+  
+--邮件服务连接参数
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'MP','EMAIL_SERVER_PROFILE','email.host','mail@cufs.com.cn',1,'邮件服务连接参数，主机地址',sysdate);
+  
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'MP','EMAIL_SERVER_PROFILE','email.port','22',1,'邮件服务连接参数，端口',sysdate);
+  
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'MP','EMAIL_SERVER_PROFILE','email.username','xjyang@cufs.com.cn',1,'邮件服务连接参数，用户',sysdate);
+  
+insert into t_system_param(ID,SYSTEM,GROUP_NAME,NAME,VALUE,ENABLED,DESCRIPTION,CREATED_TIME) 
+  values(sys_guid(),'MP','EMAIL_SERVER_PROFILE','email.password','123456abcdef',1,'邮件服务连接参数，密码',sysdate);
+  
+commit;
+
+--------------------------------------------------------
+-- [02]客户信息 T_CUST_ENTERPRISE
+--------------------------------------------------------
+--虚拟付款客户信息
+delete from T_CUST_ENTERPRISE where id = 'VC-PAYER-MALL';
+insert into T_CUST_ENTERPRISE (ID,PAY_PASSWORD,NAME,CREDENTIALS_TYPE,IDENTITY_CARD_NUMBER,SUMMARY,STATUS,CERT_STATUS,CREATE_TYPE,CREATED_TIME) values ('VC-PAYER-MALL','321','虚拟商城付款客户','P01','000000000000000000','虚拟商城付款客户','1','1','1',sysdate);
+
+--------------------------------------------------------
+-- [03]银行帐户 T_BANK_ACCOUNT
+--------------------------------------------------------
+delete from T_BANK_ACCOUNT where id between 1 and 7; 
+insert into T_BANK_ACCOUNT(ID,READ_ONLY,BANK_TYPE,BANK_NAME,BUSINESS_CODE,CHANNEL_TYPE,BANK_ACOUNT_NAME,BANK_ACOUNT_NO,V_CUSTID	)
+values(1,'1','0105','中国建设银行','1','0001','证联融通建行消费网银收款账号','6226100200114066','CV0000105001');
+
+insert into T_BANK_ACCOUNT(ID,READ_ONLY,BANK_TYPE,BANK_NAME,BUSINESS_CODE,CHANNEL_TYPE,BANK_ACOUNT_NAME,BANK_ACOUNT_NO,V_CUSTID	)
+values(2,'1','0105','中国建设银行','1','0002','证联融通建行消费快捷付收款账号','6226100200114067','CV0000105001');
+
+insert into T_BANK_ACCOUNT(ID,READ_ONLY,BANK_TYPE,BANK_NAME,BUSINESS_CODE,CHANNEL_TYPE,BANK_ACOUNT_NAME,BANK_ACOUNT_NO,V_CUSTID	)
+values(3,'1','0105','中国建设银行','2','0001','证联融通建行基金网银收款账号','6226100200114068','CV0000105002');
+
+insert into T_BANK_ACCOUNT(ID,READ_ONLY,BANK_TYPE,BANK_NAME,BUSINESS_CODE,CHANNEL_TYPE,BANK_ACOUNT_NAME,BANK_ACOUNT_NO,V_CUSTID	)
+values(4,'1','0105','中国建设银行','2','0002','证联融通建行基金快捷付收款账号','6226100200114069','CV0000105002');
+
+insert into T_BANK_ACCOUNT(ID,READ_ONLY,BANK_TYPE,BANK_NAME,BUSINESS_CODE,CHANNEL_TYPE,BANK_ACOUNT_NAME,BANK_ACOUNT_NO,V_CUSTID	)
+values(5,'1','0105','中国建设银行','2','0000','建行基金监管总账户','6226100200114061','CI9999999999');
+
+insert into T_BANK_ACCOUNT(ID,READ_ONLY,BANK_TYPE,BANK_NAME,BUSINESS_CODE,CHANNEL_TYPE,BANK_ACOUNT_NAME,BANK_ACOUNT_NO,V_CUSTID	)
+values(6,'1','0001','现金易','1','0001','证联现金易网银普通消费户','6226100200114061','CV0000000001');
+
+insert into T_BANK_ACCOUNT(ID,READ_ONLY,BANK_TYPE,BANK_NAME,BUSINESS_CODE,CHANNEL_TYPE,BANK_ACOUNT_NAME,BANK_ACOUNT_NO,V_CUSTID	)
+values(7,'1','0001','现金易','2','0002','证联现金易快捷付基金消费户','6226100200114061','CV0000000002');
+
+commit;
+--------------------------------------------------------
+-- [04]定时任务类型 T_SCHEDULER_TYPE
+--------------------------------------------------------
+delete from T_SCHEDULER_TYPE;
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('EMAIL_SEND_SERVICE','邮件发送服务','');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SYNDATA_BILLDETAIL','对账数据同步','');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('PSDE','清结算日终处理','SETTLEMENT_DAY_END');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_DAY_CUT','清结算日切','SETTLEMENT_DAY_CUT');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_TRIAL_BALANCE','清结算试算平衡','SETTLEMENT_TRIAL_BALANCE');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_YEAR_END','清结算年终结转','SETTLEMENT_YEAR_END');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_INTEREST_CAL','清结算计息','SETTLEMENT_INTEREST_CAL');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_INTEREST_SET','清结算结息','SETTLEMENT_INTEREST_SET');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_FEE_CAL','清结算计费','SETTLEMENT_FEE_CAL');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_REC_PAY','清结算支付对帐','SETTLEMENT_REC_PAY');
+insert into T_SCHEDULER_TYPE(ID,NAME,DESCRIPTION) values('SETTLEMENT_REC_CHANNEL','清结算渠道对帐','SETTLEMENT_REC_CHANNEL');
+
+commit;
+
+--------------------------------------------------------
+-- 行别  T_BANK_TYPE
+--------------------------------------------------------
+delete from T_BANK_TYPE;
+Insert into T_BANK_TYPE (BANK_TYPE,BANK_NAME) values ('0102','中国工商银行');
+Insert into T_BANK_TYPE (BANK_TYPE,BANK_NAME) values ('0105','中国建设银行');
+Insert into T_BANK_TYPE (BANK_TYPE,BANK_NAME) values ('0103','中国农业银行');
+Insert into T_BANK_TYPE (BANK_TYPE,BANK_NAME) values ('0104','中国银行');
+Insert into T_BANK_TYPE (BANK_TYPE,BANK_NAME) values ('0001','现金易');
+commit;
+
+--------------------------------------------------------
+-- 帐户类型  T_ACCOUNT_TYPE
+--------------------------------------------------------
+delete from T_ACCOUNT_TYPE;
+Insert into T_ACCOUNT_TYPE (KEY,NAME,DESCRIPTION,INTEREST_FLAG,DEPOSIT_FLAG,WITHDRAW_FLAG) values ('2011101','消费备付金',null,1,null,null);
+Insert into T_ACCOUNT_TYPE (KEY,NAME,DESCRIPTION,INTEREST_FLAG,DEPOSIT_FLAG,WITHDRAW_FLAG) values ('2011201','基金备付金','111',0,null,null);
+
+commit;
+
+--------------------------------------------------------
+-- 交易类型  T_BUSINESS_TYPE
+--------------------------------------------------------
+delete from T_BUSINESS_TYPE;
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('1','1','普通充值','101');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('2','1','普通提现','102');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('3','1','普通转账','103');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('4','2','基金充值','201');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('12','2','基金分红','217');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('11','2','基金撤单','216');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('10','2','基金退款','215');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('9','2','基金定投','214');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('8','2','基金赎回','213');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('7','2','基金申购','212');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('6','2','基金认购','211');
+Insert into T_BUSINESS_TYPE (ID,CATALOG,DESCRIPTION,TYPE) values ('5','2','基金提现','202');
+
+commit;

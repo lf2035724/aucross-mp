@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="lightcore-1.0">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/webapps/WEB-INF/lib/lightcore-1.0.jar!/" />
+    </SOURCES>
+  </library>
+</component>

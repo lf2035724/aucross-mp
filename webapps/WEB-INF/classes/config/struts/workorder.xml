@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 工单管理-->
+<struts>
+	<package name="mp_workorder" extends="default" namespace="/mp/workorder">
+		<action name="toEdit" class="workOrderAction" method="toEdit">
+			<result name="success">/pages/mp/workorder/profile.jsp</result>
+		</action>
+		<action name="edit" class="workOrderAction" method="edit">
+			<result name="success">/pages/mp/workorder/profile.jsp</result>
+			<result name="input">/pages/mp/workorder/profile.jsp</result>
+		</action>
+		<action name="toSave" class="workOrderAction" method="toSave">
+			<result name="success">/pages/mp/workorder/saveprofile.jsp</result>
+		</action>
+		<action name="save" class="workOrderAction" method="save">
+			<result name="input">/pages/mp/workorder/saveprofile.jsp</result>
+			<result name="invalid.token" type="redirectAction">toSave</result>
+			<interceptor-ref name="defaultStack" />  
+           	<interceptor-ref name="token"/>  
+			<result name="success">/pages/mp/workorder/saveprofile.jsp</result>
+		</action>
+		<action name="delete" class="workOrderAction" method="delete">
+			<result name="success">/pages/mp/workorder/list.jsp</result>
+		</action>
+
+
+
+	 <!-- 新增个人客户 -->
+	    <action name="toSave" class="workOrderAction" method="toSave">
+			<result name="success">/pages/mp/workorder/input.jsp</result>
+		</action>
+		
+	    <action name="save" class="workOrderAction" method="save">
+			<result name="success">/pages/mp/workorder/input.jsp</result>
+			<result name="input">/pages/mp/workorder/input.jsp</result>
+			<result name="invalid.token" type="redirectAction">toSave</result>
+			<interceptor-ref name="defaultStack" />  
+           	<interceptor-ref name="token"/>  
+		</action>
+		
+		<!-- 新增复核列表 -->
+	    <action name="listWaitAudit" class="workOrderAction" method="listWaitAudit">
+			<result name="success">/pages/mp/workorder/audit/list.jsp</result>
+		</action>
+		<action name="imageDetail" class="workOrderAction" method="imageDetail"/>
+		<action name="modifyDetail" class="workOrderAction" method="detail">
+			<result name="success">/pages/mp/workorder/modify.jsp</result>
+			<result name="input" type="redirectAction">list</result>
+		</action>
+		<action name="todoAuditList" class="workOrderAction" method="todoAuditList">
+			<result name="success">/pages/mp/workorder/audit/todo_audit_list.jsp</result>
+		</action>
+		<action name="auditList" class="workOrderAction" method="auditList">
+			<result name="input" type="redirectAction">list</result>
+			<result name="success">/pages/mp/workorder/audit/audit_list.jsp</result>
+		</action>
+		<action name="todoAudit" class="workOrderAction" method="todoAudit">
+			<result name="input" type="redirectAction">todoAuditList</result>
+			<result name="success">/pages/mp/workorder/audit/todo_audit.jsp</result>
+		</action>
+
+		<action name="audit" class="workOrderAction" method="audit">
+			<result name="error">/pages/mp/workorder/audit/todo_audit.jsp</result>
+			<result name="input">/pages/mp/workorder/audit/todo_audit.jsp</result>
+			<result name="success">/pages/mp/workorder/audit/todo_audit_list.jsp</result>
+		</action>
+	    <action name="pass" class="workOrderAction" method="pass">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+
+		<action name="refuse" class="workOrderAction" method="refuse">
+			<result name="success" type="redirectAction">listWaitAudit</result>
+			<result name="input" type="redirectAction">listWaitAudit</result>
+		</action>
+		<action name="list" class="workOrderAction" method="list">
+			<result name="success">/pages/mp/workorder/list.jsp</result>
+		</action>
+
+		<action name="view" class="workOrderAction" method="view">
+			<result name="input" type="redirectAction">notfound</result>
+			<result name="success">/pages/mp/workorder/view.jsp</result>
+		</action>
+		
+		<action name="modify" class="workOrderAction" method="update">
+			<result name="success">/pages/mp/workorder/list.jsp</result>
+			<result name="input">/pages/mp/workorder/modify.jsp</result>
+		</action>
+		<action name="toImport" class="workOrderAction" method="toImport">
+			<result name="success">/pages/mp/workorder/toImport.jsp</result>
+		</action>
+		<action name="importWorkOrder" class="workOrderAction" method="importWorkOrder">
+			<result name="success">/pages/mp/workorder/toImport.jsp</result>
+			<result name="input">toImport</result>
+		</action>
+		<action name="export" class="workOrderAction" method="export">
+		</action>
+	</package>
+</struts>

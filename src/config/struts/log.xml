@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 操作日志 -->
+<struts>
+
+	<!-- 操作日志 -->
+		<!--<package name="log_logportal" extends="default" namespace="/mp/log/logportal">
+		<action name="list" class="logPortalAction" method="list">
+			<result name="success">/pages/mp/log/logportal/list.jsp</result>
+		</action>
+
+		<action name="exportTxt" class="logPortalAction" method="exportTxt"></action>
+
+		<action name="exportExcel" class="logPortalAction" method="exportExcel"></action>
+	</package> -->
+
+</struts>
